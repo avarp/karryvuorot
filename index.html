@@ -4,6 +4,134 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kärryvuorot Lieksa</title>
+    <style>
+      :root {
+        --border-color: #ddd;
+        --bg-color-darken: #f5f9fa;
+        --text-color: #232323;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-size: 18px;
+        max-width: 48em;
+        margin: 0 auto;
+        padding: 1em;
+        font-family: sans-serif;
+        color: var(--text-color);
+      }
+      h1 {
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-right: 1px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
+        border-collapse: collapse;
+      }
+      table td,
+      table th {
+        padding: 0.25em;
+        border-bottom: 1px solid var(--border-color);
+        border-left: 1px solid var(--border-color);
+      }
+      table th {
+        background-color: var(--bg-color-darken);
+      }
+      .time {
+        text-align: center;
+        width: 0;
+        min-width: fit-content;
+        background-color: var(--bg-color-darken);
+      }
+      .name {
+        padding: 0;
+      }
+      .name > input {
+        font-size: 1em;
+        display: block;
+        width: 100%;
+        padding: 0.25em;
+        border: none;
+        background-color: transparent;
+      }
+      .name > input:focus {
+        outline: none;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1>Kärryvuorot <span id="date"></span></h1>
+    <table id="table">
+      <tr>
+        <th class="time">Klo</th>
+        <th class="name">Julistaja 1</th>
+        <th class="name">Julistaja 2</th>
+      </tr>
+    </table>
+
+    <script>
+      function findEl(id) {
+        return document.getElementById(id);
+      }
+      function createEl(tag) {
+        return document.createElement(tag);
+      }
+
+      const state = {
+        date: "16.03.23",
+        shifts: [
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+          ["", ""],
+        ],
+      };
+
+      function createUi(state) {
+        findEl("date").textContent = state.date;
+        let table = findEl("table");
+        state.shifts.forEach(([name1, name2], i) => {
+          let row = createEl("tr");
+          let col = createEl("td");
+          col.className = "time";
+          col.textContent =
+            Math.floor(i / 2 + 9) + ":" + (i % 2 == 0 ? "00" : "30");
+          row.appendChild(col);
+          col = createEl("td");
+          col.className = "name";
+          let input = createEl("input");
+          input.setAttribute("type", "text");
+          input.value = name1;
+          col.appendChild(input);
+          row.appendChild(col);
+          col = createEl("td");
+          col.className = "name";
+          input = createEl("input");
+          input.setAttribute("type", "text");
+          input.value = name2;
+          col.appendChild(input);
+          row.appendChild(col);
+          table.appendChild(row);
+        });
+      }
+
+      createUi(state);
+    </script>
+  </body>
 </html>
