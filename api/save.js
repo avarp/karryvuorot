@@ -1,3 +1,6 @@
+import { writeFileSync } from "fs";
+
 export default function handler(request, response) {
-  return response.send(process.cwd());
+  writeFileSync("shifts.json", '{"foo":"bar"}');
+  return response.send("OK");
 }
