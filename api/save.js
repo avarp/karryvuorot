@@ -1,6 +1,6 @@
-import { writeFileSync } from "fs";
+import { put } from "@vercel/blob";
 
 export default function handler(request, response) {
-  writeFileSync("shifts.json", '{"foo":"bar"}');
-  return response.send("OK");
+  let response = put("shifts.json", '{"foo":"bar"}', { access: "public" });
+  return response.send(response);
 }

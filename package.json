@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/avarp/karryvuorot/issues"
   },
-  "homepage": "https://github.com/avarp/karryvuorot#readme"
+  "homepage": "https://github.com/avarp/karryvuorot#readme",
+  "dependencies": {
+    "@vercel/blob": "^0.14.1"
+  }
 }
