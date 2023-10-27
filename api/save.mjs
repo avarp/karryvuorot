@@ -1,6 +1,7 @@
 import { put } from "@vercel/blob";
 
-export default function handler(request, response) {
-  let response = put("shifts.json", '{"foo":"bar"}', { access: "public" });
-  return response.send(response);
+export default async function handler(request, response) {
+  return response.send(
+    await put("shifts.json", '{"foo":"bar"}', { access: "public" })
+  );
 }
