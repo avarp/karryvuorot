@@ -9,6 +9,7 @@ export default async function handler(request, response) {
     if (key.startsWith("names")) {
       let name = shifts[key];
       let [_, shiftNum, nameNum] = key.split(".");
+      console.log(shiftNum, nameNum, key);
       shifts.names[shiftNum][nameNum] = name;
       delete shifts[key];
     }
