@@ -1,10 +1,11 @@
-import { put } from "@vercel/blob";
+import { kv } from "@vercel/kv";
 
 export default async function handler(request, response) {
   return response.send(
-    await put("shifts.json", '{"foo":"bar"}', {
-      access: "public",
-      token: "vercel_blob_rw_NIKSdiQV7xsOojuX_8JZtZQYd3M6pEbcHUkda8wfW95VOk2",
+    await kv.hset("shifts", {
+      date: "22.11.23",
+      name01: "Artem",
+      name11: "Rita",
     })
   );
 }

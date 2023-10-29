@@ -1,5 +1,5 @@
-import { readFileSync } from "fs";
+import { kv } from "@vercel/kv";
 
 export default function handler(request, response) {
-  return response.send(readFileSync("shifts.json", { encoding: "utf-8" }));
+  return response.send(kv.hgetall("shifts"));
 }

@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/avarp/karryvuorot#readme",
   "dependencies": {
-    "@vercel/blob": "^0.14.1"
+    "@vercel/kv": "^0.2.3"
   }
 }
