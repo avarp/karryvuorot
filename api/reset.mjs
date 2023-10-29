@@ -6,7 +6,7 @@ export default async function handler(request, response) {
     response.status(400);
     return;
   }
-  await kv.del("shifts");
-  await kv.hset("shifts", {date});
+  // await kv.del("shifts");
+  // await kv.hset("shifts", {date});
   response.status(200);
 }
