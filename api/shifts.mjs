@@ -9,8 +9,8 @@ export default async function handler(request, response) {
     if (key.startsWith("names")) {
       let name = shifts[key];
       let [_, shiftNum, nameNum] = key.split(".");
-      response.json({shiftNum, nameNum, name, x: shifts.names[shiftNum][nameNum]});
-      return;
+      // response.json({shiftNum, nameNum, name, x: shifts.names[shiftNum][nameNum]});
+      // return;
       shifts.names[shiftNum][nameNum] = name;
       delete shifts[key];
     }
